@@ -14,8 +14,20 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
             Text("Hello, world!")
+                .padding()
+                .onAppear {
+                    startRTSPServer()
+                }
+                
         }
         .padding()
+    }
+}
+
+func startRTSPServer() {
+    DispatchQueue.global().async {
+        let server = RTSPServer();
+        server.start();
     }
 }
 

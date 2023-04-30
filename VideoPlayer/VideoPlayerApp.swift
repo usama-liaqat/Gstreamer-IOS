@@ -12,11 +12,6 @@ import SwiftUI
 struct VideoPlayerApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
-    init() {
-        autoreleasepool {
-            gst_ios_init()
-        }
-    }
     var body: some Scene {
         WindowGroup {
             ContentView()

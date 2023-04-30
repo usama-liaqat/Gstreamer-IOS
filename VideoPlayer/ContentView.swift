@@ -8,19 +8,44 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isPlaying = false
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-                .padding()
-                .onAppear {
-                    startRTSPServer()
+            if isPlaying {
+                RtspPlayer(url: URL(string: "rtsp://127.0.0.1:554/live")!)
+            }
+
+            Spacer()
+            HStack {
+                Button {
+                    self.isPlaying = !self.isPlaying
+                } label: {
+                    if isPlaying {
+                        Label("Pause", systemImage: "pause.fill")
+                            .foregroundColor(.white)
+                                .padding(.horizontal, 16)
+                                .padding(.vertical, 8)
+                                .background(Color.blue)
+                                .cornerRadius(10)
+                    } else {
+                        Label("Play", systemImage: "play.fill")
+                            .foregroundColor(.white)
+                                .padding(.horizontal, 16)
+                                .padding(.vertical, 8)
+                                .background(Color.blue)
+                                .cornerRadius(10)
+                    }
+                    
                 }
-                
+                Button {
+                    print("Edit button was tapped")
+                } label: {
+                    Label("Edit", systemImage: "pencil")
+                }
+            }.onAppear(
+                perform: startRTSPServer
+            )
         }
-        .padding()
     }
 }
 

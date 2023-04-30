@@ -13,6 +13,7 @@
 		188973AB29FC082600582FC5 /* GStreamerPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 188973AA29FC082600582FC5 /* GStreamerPlayer.m */; };
 		188973AD29FC08CB00582FC5 /* GStreamerVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188973AC29FC08CB00582FC5 /* GStreamerVideoViewController.swift */; };
 		188973B229FEDEDA00582FC5 /* RTSPServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188973B129FEDEDA00582FC5 /* RTSPServer.swift */; };
+		188973B429FF113E00582FC5 /* CreateToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188973B329FF113E00582FC5 /* CreateToken.swift */; };
 		188CBA0329ED0D860038A71D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188CBA0229ED0D860038A71D /* AppDelegate.swift */; };
 		188CBA4729ED13A60038A71D /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 182A555929ED01D1007CC9A5 /* libiconv.tbd */; };
 		188CBA4829ED15AB0038A71D /* GStreamer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CBF55C29ECEA2E00BD2716 /* GStreamer.framework */; };
@@ -24,7 +25,6 @@
 		18CBF53B29ECE36500BD2716 /* VideoPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CBF53A29ECE36500BD2716 /* VideoPlayerTests.swift */; };
 		18CBF54529ECE36500BD2716 /* VideoPlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CBF54429ECE36500BD2716 /* VideoPlayerUITests.swift */; };
 		18CBF54729ECE36500BD2716 /* VideoPlayerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CBF54629ECE36500BD2716 /* VideoPlayerUITestsLaunchTests.swift */; };
-		18CBF55A29ECE85600BD2716 /* broadcaster.mm in Sources */ = {isa = PBXBuildFile; fileRef = 18CBF55929ECE85600BD2716 /* broadcaster.mm */; };
 		18D987C629EF74E90098BB03 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 182A556829ED0252007CC9A5 /* Metal.framework */; };
 		18D987C729EF74EF0098BB03 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 182A556629ED024A007CC9A5 /* VideoToolbox.framework */; };
 		18D987C829EF74FD0098BB03 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 182A556429ED0243007CC9A5 /* CoreVideo.framework */; };
@@ -70,6 +70,7 @@
 		188973AC29FC08CB00582FC5 /* GStreamerVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GStreamerVideoViewController.swift; sourceTree = "<group>"; };
 		188973AE29FC096000582FC5 /* GStreamerBackendDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GStreamerBackendDelegate.h; sourceTree = "<group>"; };
 		188973B129FEDEDA00582FC5 /* RTSPServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTSPServer.swift; sourceTree = "<group>"; };
+		188973B329FF113E00582FC5 /* CreateToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateToken.swift; sourceTree = "<group>"; };
 		188CBA0229ED0D860038A71D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		188CBA4B29ED50E70038A71D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		188CBA4C29EE9EAE0038A71D /* gst_ios_init.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gst_ios_init.h; sourceTree = "<group>"; };
@@ -85,8 +86,6 @@
 		18CBF54429ECE36500BD2716 /* VideoPlayerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerUITests.swift; sourceTree = "<group>"; };
 		18CBF54629ECE36500BD2716 /* VideoPlayerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		18CBF55329ECE71D00BD2716 /* VideoPlayer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VideoPlayer-Bridging-Header.h"; sourceTree = "<group>"; };
-		18CBF55629ECE73100BD2716 /* broadcaster.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = broadcaster.h; sourceTree = "<group>"; };
-		18CBF55929ECE85600BD2716 /* broadcaster.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = broadcaster.mm; sourceTree = "<group>"; };
 		18CBF55C29ECEA2E00BD2716 /* GStreamer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GStreamer.framework; path = ../../../../../Users/usamaliaqat/Library/Developer/GStreamer/iPhone.sdk/GStreamer.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -155,8 +154,6 @@
 				18CBF52D29ECE36500BD2716 /* Assets.xcassets */,
 				18CBF52F29ECE36500BD2716 /* Preview Content */,
 				18CBF55329ECE71D00BD2716 /* VideoPlayer-Bridging-Header.h */,
-				18CBF55629ECE73100BD2716 /* broadcaster.h */,
-				18CBF55929ECE85600BD2716 /* broadcaster.mm */,
 				188CBA0229ED0D860038A71D /* AppDelegate.swift */,
 				188CBA4C29EE9EAE0038A71D /* gst_ios_init.h */,
 				188CBA4D29EE9ECA0038A71D /* gst_ios_init.m */,
@@ -168,6 +165,7 @@
 				188973AC29FC08CB00582FC5 /* GStreamerVideoViewController.swift */,
 				188973AE29FC096000582FC5 /* GStreamerBackendDelegate.h */,
 				188973B129FEDEDA00582FC5 /* RTSPServer.swift */,
+				188973B329FF113E00582FC5 /* CreateToken.swift */,
 			);
 			path = VideoPlayer;
 			sourceTree = "<group>";
@@ -351,10 +349,10 @@
 				188CBA0329ED0D860038A71D /* AppDelegate.swift in Sources */,
 				188973AB29FC082600582FC5 /* GStreamerPlayer.m in Sources */,
 				187D56FB29EF9A6400484D41 /* RTSPServer.m in Sources */,
+				188973B429FF113E00582FC5 /* CreateToken.swift in Sources */,
 				183E071129EFA2EB008F51A3 /* RtspPlayer.swift in Sources */,
 				188973AD29FC08CB00582FC5 /* GStreamerVideoViewController.swift in Sources */,
 				188973B229FEDEDA00582FC5 /* RTSPServer.swift in Sources */,
-				18CBF55A29ECE85600BD2716 /* broadcaster.mm in Sources */,
 				188CBA4E29EE9ECA0038A71D /* gst_ios_init.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

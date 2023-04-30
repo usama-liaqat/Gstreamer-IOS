@@ -3,6 +3,5 @@
 //
 
 #import "gst_ios_init.h"
-#import "broadcaster.h"
 #import "RTSPServer.h"
-#include "GStreamerPlayer.h"
+#import "GStreamerPlayer.h"

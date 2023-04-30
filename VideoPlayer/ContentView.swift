@@ -50,6 +50,16 @@ struct ContentView: View {
                                 .background(Color.blue)
                                 .cornerRadius(10)
                     }
+                    Button {
+                        startPublish()
+                    } label: {
+                        Label("Start Publish", systemImage: "figure.run")
+                            .foregroundColor(.white)
+                                .padding(.horizontal, 16)
+                                .padding(.vertical, 8)
+                                .background(Color.blue)
+                                .cornerRadius(10)
+                    }
                 } else {
                     Button {
                         startRTSPServer()
@@ -62,6 +72,8 @@ struct ContentView: View {
                                 .cornerRadius(10)
                     }
                 }
+                
+                
             }.onReceive(serverStatus.$running) { state in
                 if !state {
                     isPlaying = false
@@ -77,6 +89,20 @@ func startRTSPServer() {
 
 func stopRTSPServer() {
     SwiftRTSPServer.stopServer()
+}
+
+func startPublish() {
+    createToken(uuid: "c2dd8a36-d219-11ed-afa1-0242ac120002") { result in
+        switch result {
+            case .success(let response):
+                print("Success:", response.success)
+                print("Message:", response.message)
+                print("URL:", response.data.url) // This is now a URL object
+                
+            case .failure(let error):
+                print("Error:", error.localizedDescription)
+            }
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {

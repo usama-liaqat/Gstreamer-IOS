@@ -24,7 +24,7 @@
     
     gst_init(0, nil);
     
-    self.loop = g_main_loop_new (NULL, FALSE);
+    self.serverLoop = g_main_loop_new (NULL, FALSE);
     
     server = gst_rtsp_server_new ();
     g_object_set (server, "service", Port, NULL);
@@ -46,13 +46,19 @@
     g_print("stream ready at %s\n", self.local_rtsp_url);
     
     live_status(true);
-    g_main_loop_run (self.loop);
+    g_main_loop_run (self.serverLoop);
     live_status(false);
     g_print("RTSP Server Stopped");
 }
 
 - (void)stopServer {
-    g_main_loop_quit(self.loop);
+    g_main_loop_quit(self.serverLoop);
+}
+
+- (void)startPublishing:(NSString*)uri {}
+
+- (void)stopPublishing {
+    g_main_loop_quit(self.publisherLoop);
 }
 
 @end

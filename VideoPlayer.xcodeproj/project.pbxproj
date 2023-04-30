@@ -12,6 +12,7 @@
 		187D56FB29EF9A6400484D41 /* RTSPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 187D56FA29EF9A6400484D41 /* RTSPServer.m */; };
 		188973AB29FC082600582FC5 /* GStreamerPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 188973AA29FC082600582FC5 /* GStreamerPlayer.m */; };
 		188973AD29FC08CB00582FC5 /* GStreamerVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188973AC29FC08CB00582FC5 /* GStreamerVideoViewController.swift */; };
+		188973B229FEDEDA00582FC5 /* RTSPServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188973B129FEDEDA00582FC5 /* RTSPServer.swift */; };
 		188CBA0329ED0D860038A71D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188CBA0229ED0D860038A71D /* AppDelegate.swift */; };
 		188CBA4729ED13A60038A71D /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 182A555929ED01D1007CC9A5 /* libiconv.tbd */; };
 		188CBA4829ED15AB0038A71D /* GStreamer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CBF55C29ECEA2E00BD2716 /* GStreamer.framework */; };
@@ -68,6 +69,7 @@
 		188973AA29FC082600582FC5 /* GStreamerPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GStreamerPlayer.m; sourceTree = "<group>"; };
 		188973AC29FC08CB00582FC5 /* GStreamerVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GStreamerVideoViewController.swift; sourceTree = "<group>"; };
 		188973AE29FC096000582FC5 /* GStreamerBackendDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GStreamerBackendDelegate.h; sourceTree = "<group>"; };
+		188973B129FEDEDA00582FC5 /* RTSPServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTSPServer.swift; sourceTree = "<group>"; };
 		188CBA0229ED0D860038A71D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		188CBA4B29ED50E70038A71D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		188CBA4C29EE9EAE0038A71D /* gst_ios_init.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gst_ios_init.h; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				188973AA29FC082600582FC5 /* GStreamerPlayer.m */,
 				188973AC29FC08CB00582FC5 /* GStreamerVideoViewController.swift */,
 				188973AE29FC096000582FC5 /* GStreamerBackendDelegate.h */,
+				188973B129FEDEDA00582FC5 /* RTSPServer.swift */,
 			);
 			path = VideoPlayer;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				187D56FB29EF9A6400484D41 /* RTSPServer.m in Sources */,
 				183E071129EFA2EB008F51A3 /* RtspPlayer.swift in Sources */,
 				188973AD29FC08CB00582FC5 /* GStreamerVideoViewController.swift in Sources */,
+				188973B229FEDEDA00582FC5 /* RTSPServer.swift in Sources */,
 				18CBF55A29ECE85600BD2716 /* broadcaster.mm in Sources */,
 				188CBA4E29EE9ECA0038A71D /* gst_ios_init.m in Sources */,
 			);

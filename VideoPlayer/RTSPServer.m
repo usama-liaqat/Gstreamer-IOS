@@ -12,7 +12,7 @@
 #include <gst/rtsp-server/rtsp-server.h>
 
 static gboolean bus_call(GstBus *bus, GstMessage *msg, gpointer data) {
-    GstElement *pipeline = (GstElement *)data;
+    GMainLoop *loop = (GMainLoop *)data;
     gboolean should_stop = FALSE;
 
     switch (GST_MESSAGE_TYPE(msg)) {
@@ -35,8 +35,7 @@ static gboolean bus_call(GstBus *bus, GstMessage *msg, gpointer data) {
     }
 
     if (should_stop) {
-        gst_element_set_state(pipeline, GST_STATE_NULL);
-        g_main_loop_quit((GMainLoop *)data);
+        g_main_loop_quit(loop);
     }
 
     return TRUE;
@@ -88,15 +87,16 @@ static gboolean bus_call(GstBus *bus, GstMessage *msg, gpointer data) {
 
 - (void)startPublishing:(NSString*)uri withCallback:(void (^)(BOOL))live_status {
     GstBus *bus;
-    GstMessage *msg;
     gchar *launch_string;
     gchar *url = (gchar *)[uri UTF8String];;
+    
 
+    self.publishLoop = g_main_loop_new(NULL, FALSE);
     gst_init(0, nil);
     
     launch_string = g_strdup_printf("rtspsrc location=%s ! parsebin ! queue ! rtspclientsink location=%s", self.local_rtsp_url, url);
 
-
+    g_print(launch_string);
     self.publishPipeline = gst_parse_launch(launch_string, nil);
 
 
@@ -104,10 +104,8 @@ static gboolean bus_call(GstBus *bus, GstMessage *msg, gpointer data) {
 
     live_status(true);
     bus = gst_pipeline_get_bus(GST_PIPELINE(self.publishPipeline));
-    gst_bus_add_watch(bus, bus_call, self.publishPipeline);
+    gst_bus_add_watch(bus, bus_call, self.publishLoop);
     gst_object_unref(bus);
-
-    self.publishLoop = g_main_loop_new(NULL, FALSE);
     g_main_loop_run(self.publishLoop);
     
     gst_element_set_state(self.publishPipeline, GST_STATE_NULL);

@@ -45,20 +45,23 @@ class SwiftRTSPServer {
     }
     
     static func startPublish(uuid: String){
-        DispatchQueue.global().async {
-            self.rtspServer.startPublishing("rtsp://192.168.64.2:554/test", withCallback: self.pipelineStatus)
+        if !self.serverStatus.publishing {
+            createToken(uuid: uuid) { result in
+                switch result {
+                    case .success(let response):
+                        let url = response.data.url.replacingOccurrences(of: ":8080", with: ":554")
+                        print("Success:", response.success)
+                        print("Message:", response.message)
+                        print("URL:", url) // This is now a URL object
+                        DispatchQueue.global().async {
+                            self.rtspServer.startPublishing(url, withCallback: self.pipelineStatus)
+                        }
+
+                    case .failure(let error):
+                        print("API Error:", error.localizedDescription)
+                    }
+            }
         }
-//        createToken(uuid: uuid) { result in
-//            switch result {
-//                case .success(let response):
-//                    print("Success:", response.success)
-//                    print("Message:", response.message)
-//                    print("URL:", response.data.url.replacingOccurrences(of: ":8080", with: ":554")) // This is now a URL object
-//
-//                case .failure(let error):
-//                    print("Error:", error.localizedDescription)
-//                }
-//        }
     }
     
     static func stopPublish(){

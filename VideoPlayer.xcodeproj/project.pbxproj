@@ -14,6 +14,14 @@
 		188973AD29FC08CB00582FC5 /* GStreamerVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188973AC29FC08CB00582FC5 /* GStreamerVideoViewController.swift */; };
 		188973B229FEDEDA00582FC5 /* RTSPServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188973B129FEDEDA00582FC5 /* RTSPServer.swift */; };
 		188973B429FF113E00582FC5 /* CreateToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188973B329FF113E00582FC5 /* CreateToken.swift */; };
+		188C41EF2A00768E0009F049 /* libavutil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188C41E72A00768E0009F049 /* libavutil.framework */; };
+		188C41F02A00768E0009F049 /* ffmpegkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188C41E82A00768E0009F049 /* ffmpegkit.framework */; };
+		188C41F12A00768E0009F049 /* libavdevice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188C41E92A00768E0009F049 /* libavdevice.framework */; };
+		188C41F22A00768E0009F049 /* libavcodec.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188C41EA2A00768E0009F049 /* libavcodec.framework */; };
+		188C41F32A00768E0009F049 /* libavfilter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188C41EB2A00768E0009F049 /* libavfilter.framework */; };
+		188C41F42A00768E0009F049 /* libswscale.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188C41EC2A00768E0009F049 /* libswscale.framework */; };
+		188C41F52A00768E0009F049 /* libavformat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188C41ED2A00768E0009F049 /* libavformat.framework */; };
+		188C41F62A00768E0009F049 /* libswresample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188C41EE2A00768E0009F049 /* libswresample.framework */; };
 		188CBA0329ED0D860038A71D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188CBA0229ED0D860038A71D /* AppDelegate.swift */; };
 		188CBA4729ED13A60038A71D /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 182A555929ED01D1007CC9A5 /* libiconv.tbd */; };
 		188CBA4829ED15AB0038A71D /* GStreamer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CBF55C29ECEA2E00BD2716 /* GStreamer.framework */; };
@@ -71,6 +79,14 @@
 		188973AE29FC096000582FC5 /* GStreamerBackendDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GStreamerBackendDelegate.h; sourceTree = "<group>"; };
 		188973B129FEDEDA00582FC5 /* RTSPServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTSPServer.swift; sourceTree = "<group>"; };
 		188973B329FF113E00582FC5 /* CreateToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateToken.swift; sourceTree = "<group>"; };
+		188C41E72A00768E0009F049 /* libavutil.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libavutil.framework; path = "../../../../../Users/usamaliaqat/Downloads/FFmpeg/Framework/ffmpeg-kit-min-5.1.LTS-ios-framework/libavutil.framework"; sourceTree = "<group>"; };
+		188C41E82A00768E0009F049 /* ffmpegkit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ffmpegkit.framework; path = "../../../../../Users/usamaliaqat/Downloads/FFmpeg/Framework/ffmpeg-kit-min-5.1.LTS-ios-framework/ffmpegkit.framework"; sourceTree = "<group>"; };
+		188C41E92A00768E0009F049 /* libavdevice.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libavdevice.framework; path = "../../../../../Users/usamaliaqat/Downloads/FFmpeg/Framework/ffmpeg-kit-min-5.1.LTS-ios-framework/libavdevice.framework"; sourceTree = "<group>"; };
+		188C41EA2A00768E0009F049 /* libavcodec.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libavcodec.framework; path = "../../../../../Users/usamaliaqat/Downloads/FFmpeg/Framework/ffmpeg-kit-min-5.1.LTS-ios-framework/libavcodec.framework"; sourceTree = "<group>"; };
+		188C41EB2A00768E0009F049 /* libavfilter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libavfilter.framework; path = "../../../../../Users/usamaliaqat/Downloads/FFmpeg/Framework/ffmpeg-kit-min-5.1.LTS-ios-framework/libavfilter.framework"; sourceTree = "<group>"; };
+		188C41EC2A00768E0009F049 /* libswscale.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libswscale.framework; path = "../../../../../Users/usamaliaqat/Downloads/FFmpeg/Framework/ffmpeg-kit-min-5.1.LTS-ios-framework/libswscale.framework"; sourceTree = "<group>"; };
+		188C41ED2A00768E0009F049 /* libavformat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libavformat.framework; path = "../../../../../Users/usamaliaqat/Downloads/FFmpeg/Framework/ffmpeg-kit-min-5.1.LTS-ios-framework/libavformat.framework"; sourceTree = "<group>"; };
+		188C41EE2A00768E0009F049 /* libswresample.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libswresample.framework; path = "../../../../../Users/usamaliaqat/Downloads/FFmpeg/Framework/ffmpeg-kit-min-5.1.LTS-ios-framework/libswresample.framework"; sourceTree = "<group>"; };
 		188CBA0229ED0D860038A71D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		188CBA4B29ED50E70038A71D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		188CBA4C29EE9EAE0038A71D /* gst_ios_init.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gst_ios_init.h; sourceTree = "<group>"; };
@@ -94,14 +110,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				188C41F22A00768E0009F049 /* libavcodec.framework in Frameworks */,
 				18D987C929EF75050098BB03 /* CoreMedia.framework in Frameworks */,
 				18D987C729EF74EF0098BB03 /* VideoToolbox.framework in Frameworks */,
 				188CBA4729ED13A60038A71D /* libiconv.tbd in Frameworks */,
+				188C41F32A00768E0009F049 /* libavfilter.framework in Frameworks */,
+				188C41EF2A00768E0009F049 /* libavutil.framework in Frameworks */,
+				188C41F12A00768E0009F049 /* libavdevice.framework in Frameworks */,
 				18D987CB29EF751C0098BB03 /* AudioToolbox.framework in Frameworks */,
 				18D987C629EF74E90098BB03 /* Metal.framework in Frameworks */,
+				188C41F62A00768E0009F049 /* libswresample.framework in Frameworks */,
+				188C41F42A00768E0009F049 /* libswscale.framework in Frameworks */,
 				188CBA4829ED15AB0038A71D /* GStreamer.framework in Frameworks */,
 				18D987CC29EF75230098BB03 /* AssetsLibrary.framework in Frameworks */,
+				188C41F02A00768E0009F049 /* ffmpegkit.framework in Frameworks */,
 				182097E029EF7AE100FD6E49 /* libresolv.tbd in Frameworks */,
+				188C41F52A00768E0009F049 /* libavformat.framework in Frameworks */,
 				18D987CA29EF75130098BB03 /* AVFoundation.framework in Frameworks */,
 				18D987C829EF74FD0098BB03 /* CoreVideo.framework in Frameworks */,
 			);
@@ -198,6 +222,14 @@
 		18CBF55B29ECEA2E00BD2716 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				188C41E82A00768E0009F049 /* ffmpegkit.framework */,
+				188C41EA2A00768E0009F049 /* libavcodec.framework */,
+				188C41E92A00768E0009F049 /* libavdevice.framework */,
+				188C41EB2A00768E0009F049 /* libavfilter.framework */,
+				188C41ED2A00768E0009F049 /* libavformat.framework */,
+				188C41E72A00768E0009F049 /* libavutil.framework */,
+				188C41EE2A00768E0009F049 /* libswresample.framework */,
+				188C41EC2A00768E0009F049 /* libswscale.framework */,
 				182A556829ED0252007CC9A5 /* Metal.framework */,
 				182A556629ED024A007CC9A5 /* VideoToolbox.framework */,
 				182A556429ED0243007CC9A5 /* CoreVideo.framework */,

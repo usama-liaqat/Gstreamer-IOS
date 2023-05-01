@@ -10,7 +10,7 @@
 
 #import <Foundation/Foundation.h>
 #include <gst/gst.h>
-
+#include <ffmpegkit/FFmpegKit.h>
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RTSPServer : NSObject
@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) GstElement *publishPipeline;
 @property (nonatomic) GMainLoop *publishLoop;
 @property (nonatomic) gchar *local_rtsp_url;
+@property (nonatomic) FFmpegSession *session;
 
 
 - (void)runServer:(NSString*)uri withCallback:(void (^)(BOOL))live_status;

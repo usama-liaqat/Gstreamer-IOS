@@ -11,6 +11,8 @@
 #include <gst/app/gstappsink.h>
 #include <gst/rtsp-server/rtsp-server.h>
 
+
+
 static gboolean bus_call(GstBus *bus, GstMessage *msg, gpointer data) {
     GMainLoop *loop = (GMainLoop *)data;
     gboolean should_stop = FALSE;
@@ -86,38 +88,61 @@ static gboolean bus_call(GstBus *bus, GstMessage *msg, gpointer data) {
 }
 
 - (void)startPublishing:(NSString*)uri withCallback:(void (^)(BOOL))live_status {
-    GstBus *bus;
-    gchar *launch_string;
-    gchar *url = (gchar *)[uri UTF8String];;
+//    GstBus *bus;
+//    gchar *launch_string;
+//    gchar *url = (gchar *)[uri UTF8String];;
+//
+//
+//    self.publishLoop = g_main_loop_new(NULL, FALSE);
+//    gst_init(0, nil);
+//
+//    launch_string = g_strdup_printf("rtspsrc location=%s ! parsebin ! queue ! rtspclientsink location=%s", self.local_rtsp_url, url);
+//
+//    g_print(launch_string);
+//    self.publishPipeline = gst_parse_launch(launch_string, nil);
+//
+//
+//    gst_element_set_state(self.publishPipeline, GST_STATE_PLAYING);
+//
+//    live_status(true);
+//    bus = gst_pipeline_get_bus(GST_PIPELINE(self.publishPipeline));
+//    gst_bus_add_watch(bus, bus_call, self.publishLoop);
+//    gst_object_unref(bus);
+//    g_main_loop_run(self.publishLoop);
+//
+//    gst_element_set_state(self.publishPipeline, GST_STATE_NULL);
+//    gst_object_unref(self.publishPipeline);
+//
+//    live_status(false);
     
-
-    self.publishLoop = g_main_loop_new(NULL, FALSE);
-    gst_init(0, nil);
-    
-    launch_string = g_strdup_printf("rtspsrc location=%s ! parsebin ! queue ! rtspclientsink location=%s", self.local_rtsp_url, url);
-
-    g_print(launch_string);
-    self.publishPipeline = gst_parse_launch(launch_string, nil);
-
-
-    gst_element_set_state(self.publishPipeline, GST_STATE_PLAYING);
+    NSString *local_rtsp_url = [NSString stringWithUTF8String:self.local_rtsp_url];
+    NSString *command = [NSString stringWithFormat:@"-f rtsp -i %@ -c:v copy -f rtsp -rtsp_transport tcp %@", local_rtsp_url, uri];
 
     live_status(true);
-    bus = gst_pipeline_get_bus(GST_PIPELINE(self.publishPipeline));
-    gst_bus_add_watch(bus, bus_call, self.publishLoop);
-    gst_object_unref(bus);
-    g_main_loop_run(self.publishLoop);
+    self.session = [FFmpegKit execute:command];
     
-    gst_element_set_state(self.publishPipeline, GST_STATE_NULL);
-    gst_object_unref(self.publishPipeline);
-    
-    live_status(false);
-    
+    ReturnCode *returnCode = [self.session getReturnCode];
+    if ([ReturnCode isSuccess:returnCode]) {
+        
+        // SUCCESS
+
+    } else if ([ReturnCode isCancel:returnCode]) {
+        live_status(false);
+        // CANCEL
+
+    } else {
+        live_status(false);
+        // FAILURE
+        NSLog(@"Command failed with state %@ and rc %@.%@", [FFmpegKitConfig sessionStateToString:[self.session getState]], returnCode, [self.session getFailStackTrace]);
+
+    }
 }
 
 - (void)stopPublishing {
-    gst_element_set_state(self.publishPipeline, GST_STATE_NULL);
-    g_main_loop_quit(self.publishLoop);
+//    gst_element_set_state(self.publishPipeline, GST_STATE_NULL);
+//    g_main_loop_quit(self.publishLoop);
+    long sessionId = [self.session getSessionId];
+    [FFmpegKit cancel:sessionId];
 }
 
 @end

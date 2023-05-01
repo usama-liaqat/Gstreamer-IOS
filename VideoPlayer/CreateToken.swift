@@ -18,7 +18,7 @@ struct TokenResponse: Codable {
 }
 
 struct TokenResponseData: Codable {
-    let url: URL
+    let url: String
 }
 
 func createToken(uuid: String, completion: @escaping (Result<TokenResponse, Error>) -> Void) {

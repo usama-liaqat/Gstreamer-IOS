@@ -50,16 +50,30 @@ struct ContentView: View {
                                 .background(Color.blue)
                                 .cornerRadius(10)
                     }
-                    Button {
-                        startPublish()
-                    } label: {
-                        Label("Start Publish", systemImage: "figure.run")
-                            .foregroundColor(.white)
-                                .padding(.horizontal, 16)
-                                .padding(.vertical, 8)
-                                .background(Color.blue)
-                                .cornerRadius(10)
+                    if serverStatus.publishing {
+                        Button {
+                            stopPublish()
+                        } label: {
+                            Label("Stop Publish", systemImage: "stop.fill")
+                                .foregroundColor(.white)
+                                    .padding(.horizontal, 16)
+                                    .padding(.vertical, 8)
+                                    .background(Color.blue)
+                                    .cornerRadius(10)
+                        }
+                    } else {
+                        Button {
+                            startPublish()
+                        } label: {
+                            Label("Start Publish", systemImage: "figure.run")
+                                .foregroundColor(.white)
+                                    .padding(.horizontal, 16)
+                                    .padding(.vertical, 8)
+                                    .background(Color.blue)
+                                    .cornerRadius(10)
+                        }
                     }
+                    
                 } else {
                     Button {
                         startRTSPServer()
@@ -92,17 +106,11 @@ func stopRTSPServer() {
 }
 
 func startPublish() {
-    createToken(uuid: "c2dd8a36-d219-11ed-afa1-0242ac120002") { result in
-        switch result {
-            case .success(let response):
-                print("Success:", response.success)
-                print("Message:", response.message)
-                print("URL:", response.data.url) // This is now a URL object
-                
-            case .failure(let error):
-                print("Error:", error.localizedDescription)
-            }
-    }
+    SwiftRTSPServer.startPublish(uuid: "c2dd8a36-d219-11ed-afa1-0242ac120002")
+}
+
+func stopPublish() {
+    SwiftRTSPServer.stopPublish()
 }
 
 struct ContentView_Previews: PreviewProvider {

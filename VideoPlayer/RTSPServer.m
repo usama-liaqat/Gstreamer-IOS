@@ -11,6 +11,37 @@
 #include <gst/app/gstappsink.h>
 #include <gst/rtsp-server/rtsp-server.h>
 
+static gboolean bus_call(GstBus *bus, GstMessage *msg, gpointer data) {
+    GstElement *pipeline = (GstElement *)data;
+    gboolean should_stop = FALSE;
+
+    switch (GST_MESSAGE_TYPE(msg)) {
+        case GST_MESSAGE_EOS:
+            g_print("End of stream\n");
+            should_stop = TRUE;
+            break;
+        case GST_MESSAGE_ERROR: {
+            gchar *debug;
+            GError *error;
+            gst_message_parse_error(msg, &error, &debug);
+            g_free(debug);
+            g_print("Error: %s\n", error->message);
+            g_error_free(error);
+            should_stop = TRUE;
+            break;
+        }
+        default:
+            break;
+    }
+
+    if (should_stop) {
+        gst_element_set_state(pipeline, GST_STATE_NULL);
+        g_main_loop_quit((GMainLoop *)data);
+    }
+
+    return TRUE;
+}
+
 
 @implementation RTSPServer
 
@@ -55,10 +86,40 @@
     g_main_loop_quit(self.serverLoop);
 }
 
-- (void)startPublishing:(NSString*)uri {}
+- (void)startPublishing:(NSString*)uri withCallback:(void (^)(BOOL))live_status {
+    GstBus *bus;
+    GstMessage *msg;
+    gchar *launch_string;
+    gchar *url = (gchar *)[uri UTF8String];;
+
+    gst_init(0, nil);
+    
+    launch_string = g_strdup_printf("rtspsrc location=%s ! parsebin ! queue ! rtspclientsink location=%s", self.local_rtsp_url, url);
+
+
+    self.publishPipeline = gst_parse_launch(launch_string, nil);
+
+
+    gst_element_set_state(self.publishPipeline, GST_STATE_PLAYING);
+
+    live_status(true);
+    bus = gst_pipeline_get_bus(GST_PIPELINE(self.publishPipeline));
+    gst_bus_add_watch(bus, bus_call, self.publishPipeline);
+    gst_object_unref(bus);
+
+    self.publishLoop = g_main_loop_new(NULL, FALSE);
+    g_main_loop_run(self.publishLoop);
+    
+    gst_element_set_state(self.publishPipeline, GST_STATE_NULL);
+    gst_object_unref(self.publishPipeline);
+    
+    live_status(false);
+    
+}
 
 - (void)stopPublishing {
-    g_main_loop_quit(self.publisherLoop);
+    gst_element_set_state(self.publishPipeline, GST_STATE_NULL);
+    g_main_loop_quit(self.publishLoop);
 }
 
 @end

@@ -15,13 +15,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RTSPServer : NSObject
 @property (nonatomic) GMainLoop *serverLoop;
-@property (nonatomic) GMainLoop *publisherLoop;
+@property (nonatomic) GstElement *publishPipeline;
+@property (nonatomic) GMainLoop *publishLoop;
 @property (nonatomic) gchar *local_rtsp_url;
 
 
 - (void)runServer:(NSString*)uri withCallback:(void (^)(BOOL))live_status;
 - (void)stopServer;
-- (void)startPublishing:(NSString*)uri;
+- (void)startPublishing:(NSString*)uri withCallback:(void (^)(BOOL))live_status;
 - (void)stopPublishing;
 
 @end

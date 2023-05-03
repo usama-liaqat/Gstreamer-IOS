@@ -46,6 +46,9 @@ class SwiftRTSPServer {
     
     static func startPublish(uuid: String){
         if !self.serverStatus.publishing {
+//            DispatchQueue.global().async {
+//                self.rtspServer.startPublishing("rtsp://192.168.64.2:554/test", withCallback: self.pipelineStatus)
+//            }
             createToken(uuid: uuid) { result in
                 switch result {
                     case .success(let response):

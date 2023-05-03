@@ -22,7 +22,7 @@ struct TokenResponseData: Codable {
 }
 
 func createToken(uuid: String, completion: @escaping (Result<TokenResponse, Error>) -> Void) {
-    let url = URL(string: "https://dev.service.arcadia.theremmie.com/api/create-token")!
+    let url = URL(string: "https://dev.service.arcadia.theremmie.com/api/v1/create-token")!
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
